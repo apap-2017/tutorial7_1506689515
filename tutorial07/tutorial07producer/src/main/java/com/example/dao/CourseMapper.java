@@ -32,4 +32,17 @@ public interface CourseMapper {
 	})
 	CourseModel selectCourse (@Param("id_course") String id_course);
 	
+	
+	  @Select("select id_course,name,credits from course")
+	  @Results(value = {
+	   		@Result(property="idCourse", column="id_course"),
+	   		@Result(property="name", column="name"),
+    		@Result(property="credits", column="credits"),
+    		@Result(property="students", column="id_course",
+    				javaType = List.class,
+    				many=@Many(select="selectStudents"))
+
+	  })
+	    List<CourseModel> selectAllCourses ();
+	
 }

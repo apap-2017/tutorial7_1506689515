@@ -23,4 +23,12 @@ public class CourseServiceDatabase implements CourseService {
 		 log.info("select course with id_course{}", id_course);
 		 return courseMapper.selectCourse(id_course);
 	 }
+
+	@Override
+	public List<CourseModel> selectAllCourses() {
+		log.info("select all courses");
+		return courseMapper.selectAllCourses();
+	}
+	 
+	 
 }
